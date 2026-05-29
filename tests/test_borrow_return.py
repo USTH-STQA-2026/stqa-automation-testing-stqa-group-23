@@ -74,7 +74,7 @@ def test_borrow_book(page, test_config):
 def test_view_borrowed_books(page, test_config):
     """TC-09: View borrowed books list (*Xem danh sách sách đang mượn — tab Mượn / Trả*)
 
-    🔴 NOT COMPLETED (*CHƯA HOÀN THÀNH*)
+    COMPLETED
 
     Description (*Mô tả*):
         Log in → switch to "Mượn / Trả" tab → verify borrowed books are shown.
@@ -86,13 +86,22 @@ def test_view_borrowed_books(page, test_config):
           (*Kiểm tra: có sách với aria-label chứa "Đang mượn" hoặc có nút "Trả sách"*)
     """
     # TODO: Students implement here (Sinh viên viết code ở đây)
-    pytest.skip("Not implemented — student must complete (Chưa hoàn thành)")
+    # 1.Đăng nhập bằng tài khoản ba.nguyen
+    login(page, test_config)
+    # 2.Chuyển sang tab "Mượn / Trả"
+    page.locator('flt-semantics[role="tab"][aria-label="Mượn / Trả"]').click()
+    # 3.Đợi các element của phiếu mượn xuất hiện
+    wait_for_flutter(page, text="Trả sách")
+    page.screenshot(path=os.path.join(SCREENSHOT_DIR, "tc09_view_borrowed_books.png"))
+    # 4.Kiểm tra danh sách hiển thị phiếu mượn
+    sem_text = " ".join(page.locator("flt-semantics").all_text_contents())
+    assert "Trả sách" in sem_text or "Đang mượn" in sem_text, "Lỗi: Không tìm thấy phiếu mượn nào trong tab Mượn / Trả"
 
 
 def test_return_book(page, test_config):
     """TC-10: Return a borrowed book (*Trả sách đang mượn*)
 
-    🔴 NOT COMPLETED (*CHƯA HOÀN THÀNH*)
+    COMPLETED
 
     Description (*Mô tả*):
         Log in → go to "Mượn / Trả" tab → click "Trả sách" → verify book is returned.
@@ -106,4 +115,16 @@ def test_return_book(page, test_config):
           (*Click và kiểm tra sách chuyển trạng thái hoặc có thông báo thành công*)
     """
     # TODO: Students implement here (Sinh viên viết code ở đây)
-    pytest.skip("Not implemented — student must complete (Chưa hoàn thành)")
+    # 1.Đăng nhập với tài khoản ba.nguyen và chuyển qua tab "Mượn / Trả"
+    login(page, test_config)
+    page.locator('flt-semantics[role="tab"][aria-label="Mượn / Trả"]').click()
+    wait_for_flutter(page, text="Trả sách")
+    # 2.Lấy nút Trả sách đầu tiên và click
+    return_btn = page.locator('flt-semantics[role="button"]:has-text("Trả sách")').first
+    return_btn.click()
+    # 3.Đợi nút "Trả sách" đó biến mất khỏi DOM
+    return_btn.wait_for(state="hidden", timeout=5000)
+    page.screenshot(path=os.path.join(SCREENSHOT_DIR, "tc10_return_success.png"))
+    # 4.Xác nhận việc trả sách cập nhật UI chính xác
+    sem_text = " ".join(page.locator("flt-semantics").all_text_contents())
+    assert "Trả sách" not in sem_text or "Có sẵn" in sem_text, "Lỗi: Sách chưa được trả thành công, nút 'Trả sách' vẫn còn tồn tại"
