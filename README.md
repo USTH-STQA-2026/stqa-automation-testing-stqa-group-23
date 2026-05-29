@@ -14,18 +14,18 @@ Sử dụng **Playwright + Python** để kiểm thử hệ thống Mượn sác
 
 > **⚠️ Sinh viên: Điền thông tin nhóm vào bảng dưới đây trước khi nộp bài.**
 
-|              | Thông tin                    |
-| ------------ | ---------------------------- |
-| **Tên nhóm** | `<!-- VD: Nhóm 1 -->`        |
-| **Lớp**      | `<!-- VD: SE001.P11 -->`     |
-| **Học kỳ**   | `<!-- VD: HK2 2025-2026 -->` |
+| | Thông tin |
+|---|---|
+| **Tên nhóm** | STQA_Group_23 |
+| **Lớp** | ICT2.012 |
+| **Học kỳ** | HK2 2025-2026 |
 
-| #   | MSSV | Họ và tên | Vai trò     |
-| --- | ---- | --------- | ----------- |
-| 1   |      |           | Nhóm trưởng |
-| 2   |      |           | Thành viên  |
-| 3   |      |           | Thành viên  |
-| 4   |      |           | Thành viên  |
+| # | MSSV | Họ và tên | Vai trò |
+|---|------|-----------|---------|
+| 1 | 23BI14280 | Trần Đức Minh | Nhóm trưởng |
+| 2 | 2410612 | Nguyễn Tân Nhật Minh | Thành viên |
+| 3 | 23BI14101 | Dương Minh Đức | Thành viên |
+| 4 | 2410566 | Phạm Tuấn Tùng Lâm | Thành viên |
 
 ---
 
